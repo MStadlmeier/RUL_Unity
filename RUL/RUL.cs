@@ -19,6 +19,9 @@ namespace RUL
 
         #region  RNG settings / initialization
 
+        /// <summary>
+        /// Initializes the random number generator with a random seed
+        /// </summary>
         public static void Initialize()
         {
             _seed = Environment.TickCount;
@@ -26,6 +29,10 @@ namespace RUL
             _initialized = true;
         }
 
+        /// <summary>
+        /// Initializes the random number generator with a given seed
+        /// </summary>
+        /// <param name="seed"></param>
         public static void Initialize(int seed)
         {
             _rng = new Random(seed);

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RUL.Color
+namespace RUL
 {
     public enum Hues
     {

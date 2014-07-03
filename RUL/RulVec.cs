@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 
-namespace RUL.Vector
+namespace RUL
 {
     public static class RulVec
     {
@@ -42,8 +42,8 @@ namespace RUL.Vector
         /// Returns a 2-dimensional vector whose components can vary from the base vector by a limited amount.
         /// </summary>
         /// <param name="baseVector">The vector that is used as a base for the new one</param>
-        /// <param name="maxXVariance">The highest possible difference between the vectors' x-coordinates</param>
-        /// <param name="maxYVariance">The highest possible difference between the vectors' y-coordinates</param>
+        /// <param name="maxXVariance">The highest possible difference between the vectors' x-components</param>
+        /// <param name="maxYVariance">The highest possible difference between the vectors' y-components</param>
         /// <returns></returns>
         public static Vector2 RandVector2(Vector2 baseVector, float maxXVariance, float maxYVariance)
         {
