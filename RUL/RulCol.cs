@@ -46,7 +46,7 @@ namespace RUL
         }
 
         /// <summary>
-        /// Returns a color that looks like the specified base color
+        /// Returns a color that looks similar to the specified base color
         /// </summary>
         /// <param name="baseColor">The base for the random color</param>
         /// <param name="maxRelativeVariance">A value between 0 and 1 specifying the maximum variance from the base color's RGB components</param>
@@ -59,7 +59,7 @@ namespace RUL
         /// <summary>
         /// Returns a random color with the specified hue and luminosity
         /// </summary>
-        /// <param name="hue">The approximate hue of the random color color</param>
+        /// <param name="hue">The approximate hue of the random color</param>
         /// <param name="luminosity">The approximate luminosity of the random color</param>
         public static UnityEngine.Color RandColor(Hues hue, LuminosityTypes luminosity)
         {

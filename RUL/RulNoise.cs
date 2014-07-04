@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RUL.Noise
+namespace RUL
 {
     public static class RulNoise
     {
