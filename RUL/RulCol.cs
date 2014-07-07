@@ -11,7 +11,7 @@ namespace RUL
         #region Private Fields
 
         private static Dictionary<Hues, Dictionary<LuminosityTypes, Col>> _predefinedColors;
-        private const float DEFAULT_MAX_VARIANCE = 0.1F;
+        private const float DEFAULT_MAX_VARIANCE = 0.15F;
 
         #endregion
 
@@ -80,11 +80,16 @@ namespace RUL
         }
 
         /// <summary>
-        /// Returns a random color whose r,g,b and a components are between those of colA and colB
+        /// Returns a color that is randomly interpolated between the given colors
         /// </summary>
-        public static UnityEngine.Color RandColor(UnityEngine.Color colA, UnityEngine.Color colB)
+        public static UnityEngine.Color RandColorBetween(UnityEngine.Color colA, UnityEngine.Color colB)
         {
-            return new UnityEngine.Color(Rul.RandFloat(colA.r, colB.r), Rul.RandFloat(colA.g, colB.g), Rul.RandFloat(colA.b, colB.b), Rul.RandFloat(colA.a, colB.a));
+            float v = Rul.RandFloat();
+            int r = (int)Math.Round(colA.r + (colB.r - colA.r) * v);
+            int g = (int)Math.Round(colA.g + (colB.g - colA.g) * v);
+            int b = (int)Math.Round(colA.b + (colB.b - colA.b) * v);
+            int a = (int)Math.Round(colA.a + (colB.a - colA.a) * v);
+            return new UnityEngine.Color(r, g, b, a);
         }
 
         #endregion
@@ -121,7 +126,7 @@ namespace RUL
             {
                { LuminosityTypes.Light, new Col(255,0,0) },
                { LuminosityTypes.Medium, new Col(165,0,0) },
-               { LuminosityTypes.Dark, new Col(75,0,0) }
+               { LuminosityTypes.Dark, new Col(100,0,0) }
 
             };
             Dictionary<LuminosityTypes, Col> green = new Dictionary<LuminosityTypes, Col>()
@@ -134,22 +139,22 @@ namespace RUL
             Dictionary<LuminosityTypes, Col> blue = new Dictionary<LuminosityTypes, Col>()
             {
                { LuminosityTypes.Light, new Col(0,0,255) },
-               { LuminosityTypes.Medium, new Col(0,0,165) },
-               { LuminosityTypes.Dark, new Col(0,0,75) }
+               { LuminosityTypes.Medium, new Col(0,0,175) },
+               { LuminosityTypes.Dark, new Col(0,0,100) }
 
             };
             Dictionary<LuminosityTypes, Col> orange = new Dictionary<LuminosityTypes, Col>()
             {
-               { LuminosityTypes.Light, new Col(255,165,0) },
-               { LuminosityTypes.Medium, new Col(255,140,0) },
-               { LuminosityTypes.Dark, new Col(228,125,0) }
+               { LuminosityTypes.Light, new Col(255,160,0) },
+               { LuminosityTypes.Medium, new Col(235,145,0) },
+               { LuminosityTypes.Dark, new Col(200,110,0) }
 
             };
             Dictionary<LuminosityTypes, Col> yellow = new Dictionary<LuminosityTypes, Col>()
             {
                { LuminosityTypes.Light, new Col(255,255,0) },
-               { LuminosityTypes.Medium, new Col(230,230,0) },
-               { LuminosityTypes.Dark, new Col(205,205,0) }
+               { LuminosityTypes.Medium, new Col(220,220,0) },
+               { LuminosityTypes.Dark, new Col(200,200,0) }
 
             };
             Dictionary<LuminosityTypes, Col> cyan = new Dictionary<LuminosityTypes, Col>()
