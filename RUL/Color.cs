@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RUL
 {
-    public struct Col
+    internal struct Col
     {
         #region Private Fields
 

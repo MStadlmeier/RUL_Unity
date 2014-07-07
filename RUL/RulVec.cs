@@ -39,19 +39,6 @@ namespace RUL
         }
 
         /// <summary>
-        /// Returns a 2-dimensional vector whose components can vary from the base vector by a limited amount.
-        /// </summary>
-        /// <param name="baseVector">The vector that is used as a base for the new one</param>
-        /// <param name="maxXVariance">The highest possible difference between the vectors' x-components</param>
-        /// <param name="maxYVariance">The highest possible difference between the vectors' y-components</param>
-        /// <returns></returns>
-        public static Vector2 RandVector2(Vector2 baseVector, float maxXVariance, float maxYVariance)
-        {
-            return baseVector + new Vector2(Rul.RandFloat(-maxXVariance, maxXVariance), Rul.RandFloat(-maxYVariance, maxYVariance));
-        }
-
-
-        /// <summary>
         /// Returns a randomly rotated version of the given base vector
         /// </summary>
         /// <param name="baseVector">The vector that is used as a base for the new one</param>
@@ -105,64 +92,51 @@ namespace RUL
         /// <param name="upperBoundY">Upper bound for the y-component</param>
         /// <param name="lowerBoundZ">Lower bound for the z-component</param>
         /// <param name="upperBoundZ">Upper bound for the z-component</param>
-        public static Vec3 RandVec3(float lowerBoundX, float lowerBoundY, float lowerBoundZ, float upperBoundX, float upperBoundY, float upperBoundZ)
+        public static Vector3 RandVector3(float lowerBoundX, float lowerBoundY, float lowerBoundZ, float upperBoundX, float upperBoundY, float upperBoundZ)
         {
-            return new Vec3(Rul.RandFloat(lowerBoundX, upperBoundX), Rul.RandFloat(lowerBoundY, upperBoundY), Rul.RandFloat(lowerBoundZ, upperBoundZ));
+            return new Vector3(Rul.RandFloat(lowerBoundX, upperBoundX), Rul.RandFloat(lowerBoundY, upperBoundY), Rul.RandFloat(lowerBoundZ, upperBoundZ));
         }
 
         /// <summary>
         /// Returns a random 3-dimensional vector that lies between the given end points
         /// </summary>
-        public static Vec3 RandVec3(Vec3 pointA, Vec3 pointB)
+        public static Vector3 RandVector3(Vector3 pointA, Vector3 pointB)
         {
             if (pointA == pointB)
                 return pointA;
-            Vec3 difference = pointB - pointA;
+            Vector3 difference = pointB - pointA;
             return pointA + difference * Rul.RandFloat();
 
         }
 
         /// <summary>
-        /// Returns a 3-dimensional vector whose components can vary from the base vector by a limited amount.
-        /// </summary>
-        /// <param name="baseVector">The vector that is used as a base for the new one</param>
-        /// <param name="maxXVariance">The highest possible difference between the vectors' x-coordinates</param>
-        /// <param name="maxYVariance">The highest possible difference between the vectors' y-coordinates</param>
-        /// <param name="maxZVariance">The highest possible difference between the vectors' z-coordinates</param>
-        /// <returns></returns>
-        public static Vec3 RandVec3(Vec3 baseVector, float maxXVariance, float maxYVariance, float maxZVariance)
-        {
-            return baseVector + new Vec3(Rul.RandFloat(-maxXVariance, maxXVariance), Rul.RandFloat(-maxYVariance, maxYVariance), Rul.RandFloat(-maxZVariance, maxZVariance));
-        }
-
-        /// <summary>
         /// Returns a random 3-dimensional vector with the length 1
         /// </summary>
-        public static Vec3 RandUnitVec3()
+        public static Vector3 RandUnitVector3()
         {
             float theta = Rul.RandFloat((float)Math.PI * 2);
             float z = Rul.RandFloat(-1, 1);
             float c = (float)(Math.Sqrt(1-z * z));
             float x = (float)(c * Math.Cos(theta));
             float y = (float)(c * Math.Sin(theta));
-            return new Vec3(x, y, z);
+            return new Vector3(x, y, z);
         }
 
         /// <summary>
         /// Returns a random 3-dimensional vector that lies in the sphere with the specified radius
         /// </summary>
         /// <param name="sphereRadius">The radius of the sphere that contains the point represented by the random vector</param>
-        public static Vec3 RandVecInSphere(float sphereRadius)
+        public static Vector3 RandVecInSphere(float sphereRadius)
         {
-            return RandUnitVec3() * sphereRadius;
+            return RandUnitVector3() * sphereRadius;
         }
 
         /// <summary>
         /// Returns a random 3-dimensional vector that points left, right, up, down, forwards or backwards
         /// </summary>
-        public static Vec3 RandDirection3()
+        public static Vector3 RandDirection3()
         {
-            return Rul.RandElement(new Vec3(-1, 0, 0), new Vec3(1, 0, 0), new Vec3(0, -1, 0), new Vec3(0, 1, 0), new Vec3(0, 0, -1), new Vec3(0, 0, 1));
+            return Rul.RandElement(new Vector3(-1, 0, 0), new Vector3(1, 0, 0), new Vector3(0, -1, 0), new Vector3(0, 1, 0), new Vector3(0, 0, -1), new Vector3(0, 0, 1));
         }
 
         #endregion
