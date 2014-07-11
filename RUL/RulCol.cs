@@ -110,7 +110,7 @@ namespace RUL
                 }
                 catch (DivideByZeroException) { }
 
-                
+
                 float r = Math.Min(1, baseColor.r * correction);
                 float g = Math.Min(1, baseColor.g * correction);
                 float b = Math.Min(1, baseColor.b * correction);
@@ -205,7 +205,7 @@ namespace RUL
             if (_predefinedColors.ContainsKey(hue) && _predefinedColors[hue].ContainsKey(luminosity))
             {
                 Col original = _predefinedColors[hue][luminosity];
-                return ConvertColor(original.R,original.G,original.B,original.A);
+                return ConvertColor(original.R, original.G, original.B, original.A);
             }
             return new UnityEngine.Color();
         }
@@ -216,36 +216,32 @@ namespace RUL
         /// </summary>
         private static float GetVarianceFactor(float value)
         {
-            //This method works best with values > 0.4
-            if (value >= 0.4)
+            //This method works best with values > 0.49
+            if (value >= 0.49)
                 return value * value;
-            return 0.15F;
+            return 0.24F;
         }
 
         private static UnityEngine.Color RandomizeColor(UnityEngine.Color baseColor, float maxRelativeVariance, bool monochrome = false)
         {
-            if (maxRelativeVariance >= 0 && maxRelativeVariance <= 1)
+            maxRelativeVariance = MathHelper.Clamp(maxRelativeVariance, 0, 1);
+            //Monochrome colors should stay monochrome
+            if (!monochrome)
             {
-                //Monochrome colors should stay monochrome
-                if (!monochrome)
-                {
-                    float variance = Rul.RandFloat(maxRelativeVariance * GetVarianceFactor(baseColor.r));
-                    float r = MathHelper.Clamp(baseColor.r + Rul.RandSign() * variance, 0, 1);
-                    variance = Rul.RandFloat(maxRelativeVariance * GetVarianceFactor(baseColor.g));
-                    float g = MathHelper.Clamp(baseColor.g + Rul.RandSign() * variance, 0, 1);
-                    variance = Rul.RandFloat(maxRelativeVariance * GetVarianceFactor(baseColor.b));
-                    float b = MathHelper.Clamp(baseColor.b + Rul.RandSign() * variance, 0, 1);
-                    return new UnityEngine.Color(r, g, b, baseColor.a);
-                }
-                else
-                {
-                    float variance = Rul.RandFloat(maxRelativeVariance * GetVarianceFactor(baseColor.r));
-                    float newValue = MathHelper.Clamp(baseColor.r + Rul.RandSign() * variance, 0, 1);
-                    return new UnityEngine.Color(newValue, newValue, newValue, baseColor.a);
-                }
+                float variance = Rul.RandFloat(maxRelativeVariance * GetVarianceFactor(baseColor.r));
+                float r = MathHelper.Clamp(baseColor.r + Rul.RandSign() * variance, 0, 1);
+                variance = Rul.RandFloat(maxRelativeVariance * GetVarianceFactor(baseColor.g));
+                float g = MathHelper.Clamp(baseColor.g + Rul.RandSign() * variance, 0, 1);
+                variance = Rul.RandFloat(maxRelativeVariance * GetVarianceFactor(baseColor.b));
+                float b = MathHelper.Clamp(baseColor.b + Rul.RandSign() * variance, 0, 1);
+                return new UnityEngine.Color(r, g, b, baseColor.a);
             }
             else
-                throw new ArgumentException("Value must be between 0 and 1");
+            {
+                float variance = Rul.RandFloat(maxRelativeVariance * GetVarianceFactor(baseColor.r));
+                float newValue = MathHelper.Clamp(baseColor.r + Rul.RandSign() * variance, 0, 1);
+                return new UnityEngine.Color(newValue, newValue, newValue, baseColor.a);
+            }
         }
 
         /// <summary>

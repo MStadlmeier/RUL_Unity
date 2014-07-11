@@ -128,7 +128,7 @@ namespace RUL
         /// <param name="sphereRadius">The radius of the sphere that contains the point represented by the random vector</param>
         public static Vector3 RandVecInSphere(float sphereRadius)
         {
-            return RandUnitVector3() * sphereRadius;
+            return RandUnitVector3() * Rul.RandFloat() * sphereRadius;
         }
 
         /// <summary>
