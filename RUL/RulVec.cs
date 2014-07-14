@@ -29,7 +29,7 @@ namespace RUL
         /// <summary>
         /// Returns a random 2-dimensional vector that lies between the given end points
         /// </summary>
-        public static Vector2 RandVector2(Vector2 pointA, Vector2 pointB)
+        public static Vector2 RandVector2Between(Vector2 pointA, Vector2 pointB)
         {
             if (pointA == pointB)
                 return pointA;
@@ -43,9 +43,9 @@ namespace RUL
         /// </summary>
         /// <param name="baseVector">The vector that is used as a base for the new one</param>
         /// <param name="maxAngle">The greatest possible angle(in radians) between the base vector and the rotated random vector</param>
-        public static Vector2 RandVector2(Vector2 baseVector, float maxAngle)
+        public static Vector2 RandVector2(Vector2 baseVector, double maxAngle)
         {
-            float angle = Rul.RandFloat(maxAngle % (float)(2F * Math.PI)) * Rul.RandSign();
+            float angle = Rul.RandFloat((float)maxAngle % (float)(2F * Math.PI)) * Rul.RandSign();
             double cos = Math.Cos(angle);
             double sin = Math.Sin(angle);
             float newX = (float)(baseVector.x * cos - baseVector.y * sin);
@@ -100,7 +100,7 @@ namespace RUL
         /// <summary>
         /// Returns a random 3-dimensional vector that lies between the given end points
         /// </summary>
-        public static Vector3 RandVector3(Vector3 pointA, Vector3 pointB)
+        public static Vector3 RandVector3Between(Vector3 pointA, Vector3 pointB)
         {
             if (pointA == pointB)
                 return pointA;
