@@ -1,0 +1,317 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RUL</name>
+    </assembly>
+    <members>
+        <member name="M:RUL.RulCol.RandColor">
+            <summary>
+            Returns a completely random, opaque color
+            </summary>
+        </member>
+        <member name="M:RUL.RulCol.RandColor(System.Single)">
+             <summary>
+            Returns a completely random color with the specified alpha value
+             </summary>
+             /// <param name="alpha">Opacity between 0 and 1</param>
+        </member>
+        <member name="M:RUL.RulCol.RandColor(System.Single,System.Single)">
+            <summary>
+            Returns a random color with the specified alpha value and lightness
+            </summary>
+            <param name="alpha">Opacity between 0 and 1</param>
+            <param name="lightness">Lightness between 0 and 1</param>
+            <returns></returns>
+        </member>
+        <member name="M:RUL.RulCol.RandColor(UnityEngine.Color,System.Single)">
+            <summary>
+            Returns a color that looks similar to the specified base color
+            </summary>
+            <param name="baseColor">The base for the random color</param>
+            <param name="maxRelativeVariance">A value between 0 and 1 specifying the maximum variance from the base color's RGB components</param>
+            <returns></returns>
+        </member>
+        <member name="M:RUL.RulCol.RandColor(RUL.Hues,RUL.LuminosityTypes)">
+            <summary>
+            Returns a random color with the specified hue and luminosity
+            </summary>
+            <param name="hue">The approximate hue of the random color</param>
+            <param name="luminosity">The approximate luminosity of the random color</param>
+        </member>
+        <member name="M:RUL.RulCol.RandColor(RUL.Hues)">
+            <summary>
+            Returns a random color with the specified hue and random luminosity
+            </summary>
+            <param name="hue">The approximate hue of the random color</param>
+        </member>
+        <member name="M:RUL.RulCol.RandColorBetween(UnityEngine.Color,UnityEngine.Color)">
+            <summary>
+            Returns a color that is randomly interpolated between the given colors
+            </summary>
+        </member>
+        <member name="M:RUL.RulCol.GetVarianceFactor(System.Single)">
+            <summary>
+            Returns a coefficient between 0 and 1 that determines how much variety will actually be permitted for RandomizeColor.
+            This makes getting natural, appealing variants of colors easier.
+            </summary>
+        </member>
+        <member name="M:RUL.RulCol.ConvertColor(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Converts the given color from the original 0-255 to unity's 0-1 range
+            </summary>
+        </member>
+        <member name="F:RUL.InclusionOptions.Both">
+            <summary>
+            Includes both the lower and the upper bound
+            </summary>
+        </member>
+        <member name="F:RUL.InclusionOptions.Lower">
+            <summary>
+            Only includes the lower bound
+            </summary>
+        </member>
+        <member name="F:RUL.InclusionOptions.Upper">
+            <summary>
+            Only includes the upper bound
+            </summary>
+        </member>
+        <member name="F:RUL.InclusionOptions.None">
+            <summary>
+            Both bounds are excluded
+            </summary>
+        </member>
+        <member name="M:RUL.MathHelper.Clamp(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Clamps the value between lower and upper bound
+            </summary>
+        </member>
+        <member name="M:RUL.MathHelper.Clamp(System.Int64,System.Int64,System.Int64)">
+            <summary>
+            Clamps the value between lower and upper bound
+            </summary>
+        </member>
+        <member name="M:RUL.MathHelper.Clamp(System.Single,System.Single,System.Single)">
+            <summary>
+            Clamps the value between lower and upper bound
+            </summary>
+        </member>
+        <member name="M:RUL.MathHelper.FloatsEqual(System.Single,System.Single)">
+            <summary>
+            Very simple floating point comparison
+            </summary>
+        </member>
+        <member name="M:RUL.Rul.Initialize">
+            <summary>
+            Initializes the random number generator with a random seed
+            </summary>
+        </member>
+        <member name="M:RUL.Rul.Initialize(System.Int32)">
+            <summary>
+            Initializes the random number generator with a given seed
+            </summary>
+            <param name="seed"></param>
+        </member>
+        <member name="M:RUL.Rul.RandFloat">
+            <summary>
+            Returns a random float between 0 and 1
+            </summary>
+        </member>
+        <member name="M:RUL.Rul.RandFloat(System.Single)">
+            <summary>
+            Returns a random float between 0 and max
+            </summary>
+            <param name="max">The upper bound for the random value</param>
+        </member>
+        <member name="M:RUL.Rul.RandFloat(System.Single,System.Single)">
+            <summary>
+            Returns a random float between min and max, both included
+            </summary>
+            <param name="min">The lower bound for the random value</param>
+            <param name="max">The upper bound for the random value</param>
+        </member>
+        <member name="M:RUL.Rul.RandDouble">
+            <summary>
+            Returns a random double between 0 and 1
+            </summary>
+        </member>
+        <member name="M:RUL.Rul.RandDouble(System.Double)">
+            <summary>
+            Returns a random double between 0 and max
+            </summary>
+            <param name="max">The upper bound for the random value</param>
+        </member>
+        <member name="M:RUL.Rul.RandDouble(System.Double,System.Double)">
+            <summary>
+            Returns a random double between min and max, both included
+            </summary>
+            <param name="min">The lower bound for the random value</param>
+            <param name="max">The upper bound for the random value</param>
+        </member>
+        <member name="M:RUL.Rul.RandInt(System.Int32,RUL.InclusionOptions)">
+            <summary>
+            Returns a random integer between 0 and max. Max is excluded by default
+            </summary>
+            <param name="max">The upper bound for the random value</param>
+            <param name="option">Determines which bounds are included</param>
+            <returns></returns>
+        </member>
+        <member name="M:RUL.Rul.RandInt(System.Int32,System.Int32,RUL.InclusionOptions)">
+            <summary>
+            Returns a random int between min and max. Both bounds are included by default
+            </summary>
+        </member>
+        <member name="M:RUL.Rul.RandLong(System.Int64,RUL.InclusionOptions)">
+            <summary>
+            Returns a random long between 0 and max. Max is excluded by default
+            </summary>
+            <param name="max">The upper bound for the random value</param>
+            <param name="option">Determines which bounds are included</param>
+            <returns></returns>
+        </member>
+        <member name="M:RUL.Rul.RandLong(System.Int64,System.Int64,RUL.InclusionOptions)">
+            <summary>
+            Returns a random long between min and max. Both bounds are included by default
+            </summary>
+        </member>
+        <member name="M:RUL.Rul.RandBool">
+            <summary>
+            Returns true or false
+            </summary>
+        </member>
+        <member name="M:RUL.Rul.RandSign">
+            <summary>
+            Returns 1 or -1
+            </summary>
+        </member>
+        <member name="M:RUL.Rul.Shuffle``1(``0[])">
+            <summary>
+            Shuffles the elements of the given array
+            </summary>
+        </member>
+        <member name="M:RUL.Rul.RandElement``1(``0[])">
+            <summary>
+            Returns a random element from the given array.
+            </summary>
+        </member>
+        <member name="M:RUL.Rul.RandElement``1(``0[],System.Single[])">
+            <summary>
+            Returns a random element from the given array with the specified probabilities for each element
+            </summary>
+            <param name="elements">The selection of elements</param>
+            <param name="probabilities">The probability for each element</param>
+        </member>
+        <member name="M:RUL.Rul.RandElement``1(RUL.RandObject{``0}[])">
+            <summary>
+            Returns a random object from the given array of RandObjects
+            </summary>
+        </member>
+        <member name="M:RUL.RulNoise.RandNoise1(System.Int32)">
+            <summary>
+            Returns a random, one-dimensional array of floats between 0 and 1
+            </summary>
+        </member>
+        <member name="M:RUL.RulNoise.RandNoise2(System.Int32,System.Int32)">
+            <summary>
+            Returns a random, two-dimensional array of floats between 0 and 1
+            </summary>
+        </member>
+        <member name="M:RUL.RulNoise.RandNoise3(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns a random, three-dimensional array of floats between 0 and 1
+            </summary>
+        </member>
+        <member name="M:RUL.RulNoise.RandPerlinNoise2(System.Int32,System.Int32)">
+            <summary>
+            Returns 2 dimensional perlin noise of the specified size and with default parameters
+            </summary>
+        </member>
+        <member name="M:RUL.RulNoise.RandPerlinNoise2(System.Int32,System.Int32,System.Single,System.Single,System.Int32,System.Single)">
+            <summary>
+            Returns 2 dimensional perlin noise of the specified size and with the given parameters. See documentation for more information
+            on parameters and recommended values.
+            </summary>
+            <param name="width">The width of the noise</param>
+            <param name="height">The height of the noise</param>
+            <param name="frequency">The frequency of the noise function.A high frequency will make the noise look more random
+            while a low frequency will make the noise look more flat and bland. 
+            Default : 1</param>
+            <param name="persistence">The rate at which the frequency decreases for each octave. Increasing this value will make the noise
+            rougher, while decreasing it will make it smoother.
+            Default : 0.5 , Min : 0</param>
+            <param name="octaveCount">The octave count determines how many noise functions are combined. Increasing this value will make
+            the noise look more fractal, decreasing it will make the noise look more simple and stylized.
+            Increasing this value will significantly increase computation time.
+            Default : 6 , Min : 1 , Max : 32</param>
+            <param name="amplitude">The highest value any point in the noise can have. Default : 1</param>
+        </member>
+        <member name="M:RUL.RulVec.RandVector2(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Returns a random 2-dimensional vector within the specified range
+            </summary>
+            <param name="lowerBoundX">Lower bound for the x-component</param>
+            <param name="upperBoundX">Upper bound for the x-component</param>
+            <param name="lowerBoundY">Lower bound for the y-component</param>
+            <param name="upperBoundY">Upper bound for the y-component</param>
+        </member>
+        <member name="M:RUL.RulVec.RandVector2Between(UnityEngine.Vector2,UnityEngine.Vector2)">
+            <summary>
+            Returns a random 2-dimensional vector that lies between the given end points
+            </summary>
+        </member>
+        <member name="M:RUL.RulVec.RandVector2(UnityEngine.Vector2,System.Double)">
+            <summary>
+            Returns a randomly rotated version of the given base vector
+            </summary>
+            <param name="baseVector">The vector that is used as a base for the new one</param>
+            <param name="maxAngle">The greatest possible angle(in radians) between the base vector and the rotated random vector</param>
+        </member>
+        <member name="M:RUL.RulVec.RandUnitVector2">
+            <summary>
+            Returns a random 2-dimensional vector with the length 1
+            </summary>
+        </member>
+        <member name="M:RUL.RulVec.RandVecInCircle(System.Single)">
+            <summary>
+            Returns a random 2-dimensional vector that lies in the circle with the specified radius
+            </summary>
+            <param name="circleRadius">The radius of the circle that contains the point represented by the random vector</param>
+        </member>
+        <member name="M:RUL.RulVec.RandDirection2">
+            <summary>
+            Returns a random 2-dimensional vector that points up, down, left or right
+            </summary>
+        </member>
+        <member name="M:RUL.RulVec.RandVector3(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Returns a random 3-dimensional vector within the specified range
+            </summary>
+            <param name="lowerBoundX">Lower bound for the x-component</param>
+            <param name="upperBoundX">Upper bound for the x-component</param>
+            <param name="lowerBoundY">Lower bound for the y-component</param>
+            <param name="upperBoundY">Upper bound for the y-component</param>
+            <param name="lowerBoundZ">Lower bound for the z-component</param>
+            <param name="upperBoundZ">Upper bound for the z-component</param>
+        </member>
+        <member name="M:RUL.RulVec.RandVector3Between(UnityEngine.Vector3,UnityEngine.Vector3)">
+            <summary>
+            Returns a random 3-dimensional vector that lies between the given end points
+            </summary>
+        </member>
+        <member name="M:RUL.RulVec.RandUnitVector3">
+            <summary>
+            Returns a random 3-dimensional vector with the length 1
+            </summary>
+        </member>
+        <member name="M:RUL.RulVec.RandVecInSphere(System.Single)">
+            <summary>
+            Returns a random 3-dimensional vector that lies in the sphere with the specified radius
+            </summary>
+            <param name="sphereRadius">The radius of the sphere that contains the point represented by the random vector</param>
+        </member>
+        <member name="M:RUL.RulVec.RandDirection3">
+            <summary>
+            Returns a random 3-dimensional vector that points left, right, up, down, forwards or backwards
+            </summary>
+        </member>
+    </members>
+</doc>
