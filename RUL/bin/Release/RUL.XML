@@ -10,16 +10,9 @@
             </summary>
         </member>
         <member name="M:RUL.RulCol.RandColor(System.Single)">
-             <summary>
-            Returns a completely random color with the specified alpha value
-             </summary>
-             /// <param name="alpha">Opacity between 0 and 1</param>
-        </member>
-        <member name="M:RUL.RulCol.RandColor(System.Single,System.Single)">
             <summary>
-            Returns a random color with the specified alpha value and lightness
+            Returns a random, opaque color with the specified lightness
             </summary>
-            <param name="alpha">Opacity between 0 and 1</param>
             <param name="lightness">Lightness between 0 and 1</param>
             <returns></returns>
         </member>

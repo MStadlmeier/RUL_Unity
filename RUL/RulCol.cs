@@ -26,23 +26,13 @@ namespace RUL
         }
 
         /// <summary>
-        ///Returns a completely random color with the specified alpha value
+        /// Returns a random, opaque color with the specified lightness
         /// </summary>
-        /// /// <param name="alpha">Opacity between 0 and 1</param>
-        public static UnityEngine.Color RandColor(float alpha)
-        {
-            return new UnityEngine.Color(Rul.RandFloat(), Rul.RandFloat(), Rul.RandFloat(), alpha);
-        }
-
-        /// <summary>
-        /// Returns a random color with the specified alpha value and lightness
-        /// </summary>
-        /// <param name="alpha">Opacity between 0 and 1</param>
         /// <param name="lightness">Lightness between 0 and 1</param>
         /// <returns></returns>
-        public static UnityEngine.Color RandColor(float alpha, float lightness)
+        public static UnityEngine.Color RandColor(float lightness)
         {
-            return AdjustLightness(RandColor(alpha), lightness);
+            return AdjustLightness(RandColor(), lightness);
         }
 
         /// <summary>
