@@ -106,6 +106,13 @@ namespace RUL
                 return RandDouble(max, min);
         }
 
+        /// <summary>
+        /// Returns a random integer between 0 and int.MaxValue (both included)
+        /// </summary>
+        public static int RandInt()
+        {
+            return RandInt(0, int.MaxValue, InclusionOptions.Both);
+        }
 
         /// <summary>
         /// Returns a random integer between 0 and max. Max is excluded by default
@@ -156,6 +163,14 @@ namespace RUL
                 return min;
             else
                 return RandInt(max, min, option);
+        }
+
+        /// <summary>
+        /// Returns a random long between 0 and long.MaxValue
+        /// </summary>
+        public static long RandLong()
+        {
+            return RandLong(0, long.MaxValue, InclusionOptions.Both);
         }
 
         /// <summary>

@@ -58,6 +58,8 @@
     <Compile Include="PerlinGenerator.cs" />
     <Compile Include="RulNoise.cs" />
     <Compile Include="RulVec.cs" />
+    <Compile Include="SimplexGenerator.cs" />
+    <Compile Include="SimplexOctave.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

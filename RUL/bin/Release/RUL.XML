@@ -140,6 +140,11 @@
             <param name="min">The lower bound for the random value</param>
             <param name="max">The upper bound for the random value</param>
         </member>
+        <member name="M:RUL.Rul.RandInt">
+            <summary>
+            Returns a random integer between 0 and int.MaxValue (both included)
+            </summary>
+        </member>
         <member name="M:RUL.Rul.RandInt(System.Int32,RUL.InclusionOptions)">
             <summary>
             Returns a random integer between 0 and max. Max is excluded by default
@@ -151,6 +156,11 @@
         <member name="M:RUL.Rul.RandInt(System.Int32,System.Int32,RUL.InclusionOptions)">
             <summary>
             Returns a random int between min and max. Both bounds are included by default
+            </summary>
+        </member>
+        <member name="M:RUL.Rul.RandLong">
+            <summary>
+            Returns a random long between 0 and long.MaxValue
             </summary>
         </member>
         <member name="M:RUL.Rul.RandLong(System.Int64,RUL.InclusionOptions)">
@@ -198,6 +208,19 @@
             Returns a random object from the given array of RandObjects
             </summary>
         </member>
+        <member name="M:RUL.Generators.PerlinGenerator.GetPerlinNoise">
+            <summary>
+            Returns a 2D perlin noise array
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RUL.Generators.PerlinGenerator.PerlinNoiseAt(System.Int32,System.Int32)">
+            <summary>
+            Returns a single Perlin noise sample at the specified coordinates
+            At the moment you will still need to specifiy the maximum size for the noise in the constructor,
+            even if you only need a single sample
+            </summary>
+        </member>
         <member name="M:RUL.RulNoise.RandNoise1(System.Int32)">
             <summary>
             Returns a random, one-dimensional array of floats between 0 and 1
@@ -225,6 +248,55 @@
             </summary>
             <param name="width">The width of the noise</param>
             <param name="height">The height of the noise</param>
+            <param name="frequency">The frequency of the noise function.A high frequency will make the noise look more random
+            while a low frequency will make the noise look more flat and bland. 
+            Default : 1</param>
+            <param name="persistence">The rate at which the frequency decreases for each octave. Increasing this value will make the noise
+            rougher, while decreasing it will make it smoother.
+            Default : 0.5 , Min : 0</param>
+            <param name="octaveCount">The octave count determines how many noise functions are combined. Increasing this value will make
+            the noise look more fractal, decreasing it will make the noise look more simple and stylized.
+            Increasing this value will significantly increase computation time.
+            Default : 6 , Min : 1 , Max : 32</param>
+            <param name="amplitude">The highest value any point in the noise can have. Default : 1</param>
+        </member>
+        <member name="M:RUL.RulNoise.RandSimplexNoise2(System.Int32,System.Int32)">
+            <summary>
+            Returns 2 dimensional simplex noise of the specified size and with default parameters
+            </summary>
+        </member>
+        <member name="M:RUL.RulNoise.RandSimplexNoise2(System.Int32,System.Int32,System.Single,System.Single,System.Int32,System.Single)">
+            <summary>
+            Returns 2 dimensional simplex noise of the specified size and with the given parameters. See documentation for more information
+            on parameters and recommended values.
+            </summary>
+            <param name="width">The width of the noise</param>
+            <param name="height">The height of the noise</param>
+            <param name="frequency">The frequency of the noise function.A high frequency will make the noise look more random
+            while a low frequency will make the noise look more flat and bland. 
+            Default : 1</param>
+            <param name="persistence">The rate at which the frequency decreases for each octave. Increasing this value will make the noise
+            rougher, while decreasing it will make it smoother.
+            Default : 0.5 , Min : 0</param>
+            <param name="octaveCount">The octave count determines how many noise functions are combined. Increasing this value will make
+            the noise look more fractal, decreasing it will make the noise look more simple and stylized.
+            Increasing this value will significantly increase computation time.
+            Default : 6 , Min : 1 , Max : 32</param>
+            <param name="amplitude">The highest value any point in the noise can have. Default : 1</param>
+        </member>
+        <member name="M:RUL.RulNoise.RandSimplexNoise3(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns 3 dimensional simplex noise of the specified size and with default parameters
+            </summary>
+        </member>
+        <member name="M:RUL.RulNoise.RandSimplexNoise3(System.Int32,System.Int32,System.Int32,System.Single,System.Single,System.Int32,System.Single)">
+            <summary>
+            Returns 3 dimensional simplex noise of the specified size and with the given parameters. See documentation for more information
+            on parameters and recommended values.
+            </summary>
+            <param name="width">The width of the noise</param>
+            <param name="height">The height of the noise</param>
+            <param name="depth">The depth of the noise</param>
             <param name="frequency">The frequency of the noise function.A high frequency will make the noise look more random
             while a low frequency will make the noise look more flat and bland. 
             Default : 1</param>
@@ -304,6 +376,26 @@
         <member name="M:RUL.RulVec.RandDirection3">
             <summary>
             Returns a random 3-dimensional vector that points left, right, up, down, forwards or backwards
+            </summary>
+        </member>
+        <member name="M:RUL.Generators.SimplexGenerator.GetSimplexNoise(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns 2D simplex noise for a specified area
+            </summary>
+        </member>
+        <member name="M:RUL.Generators.SimplexGenerator.GetSimplexNoise(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns 3D simplex noise for a specified area
+            </summary>
+        </member>
+        <member name="M:RUL.Generators.SimplexGenerator.SimplexNoiseAt(System.Single,System.Single,System.Boolean)">
+            <summary>
+            Returns a noise sample at the specified 2D coordinates
+            </summary>
+        </member>
+        <member name="M:RUL.Generators.SimplexGenerator.SimplexNoiseAt(System.Single,System.Single,System.Single,System.Boolean)">
+            <summary>
+            Returns a noise sample at the specified 3D coordinates
             </summary>
         </member>
     </members>

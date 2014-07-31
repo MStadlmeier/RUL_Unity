@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RUL
+namespace RUL.Generators
 {
-    internal class PerlinGenerator
+    public class PerlinGenerator
     {
         #region Private
 
@@ -18,7 +18,7 @@ namespace RUL
 
         #region Constructors
 
-        public PerlinGenerator(int width, int height, float persistence, float frequency, int octaveCount, float amplitude)
+        public PerlinGenerator(int width, int height, float frequency, float persistence, int octaveCount, float amplitude)
         {
             this._persistence = persistence;
             this._octaveCount = octaveCount;
@@ -28,12 +28,16 @@ namespace RUL
             this._width = width;
             this._height = height;
 
-            _baseNoise = RulNoise.RandNoise2(width,height);
+            _baseNoise = RulNoise.RandNoise2(width, height);
         }
 
+        /// <summary>
+        /// Returns a 2D perlin noise array
+        /// </summary>
+        /// <returns></returns>
         public float[,] GetPerlinNoise()
         {
-            _highestValue = PerlinNoiseAt(0, 0,true);
+            _highestValue = PerlinNoiseAt(0, 0, true);
             float[,] noise = new float[_width, _height];
             for (int x = 0; x < _width; x++)
             {
@@ -44,6 +48,16 @@ namespace RUL
                 }
             }
             return noise;
+        }
+
+        /// <summary>
+        /// Returns a single Perlin noise sample at the specified coordinates
+        /// At the moment you will still need to specifiy the maximum size for the noise in the constructor,
+        /// even if you only need a single sample
+        /// </summary>
+        public float PerlinNoiseAt(int x, int y)
+        {
+            return PerlinNoiseAt(x, y, false);
         }
 
         #endregion
@@ -72,14 +86,7 @@ namespace RUL
             return value;
         }
 
-        private float NormalizeValue(float val, float currentMin, float currentMax, float newMin, float newMax)
-        {
-            if (currentMax - currentMin != 0)
-                return (val - currentMin) / (currentMax - currentMin) * (newMax - newMin) + newMin;
-            return 0;
-        }
-
-        private float PerlinNoiseAt(int x, int y, bool testHighest = false)
+        private float PerlinNoiseAt(int x, int y, bool testHighest)
         {
             float value = 0;
             float amplitude = _amplitude;
@@ -93,7 +100,7 @@ namespace RUL
             }
             if (testHighest)
                 return value;
-            return NormalizeValue(value, 0, _highestValue, 0, _amplitude);
+            return MathHelper.NormalizeValue(value, 0, _highestValue, 0, _amplitude);
         }
 
         #endregion

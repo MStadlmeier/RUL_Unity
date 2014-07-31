@@ -77,5 +77,12 @@ namespace RUL
         {
             return Math.Abs(a - b) < EPSILON;
         }
+
+        internal static float NormalizeValue(float val, float currentMin, float currentMax, float newMin, float newMax)
+        {
+            if (currentMax - currentMin != 0)
+                return (val - currentMin) / (currentMax - currentMin) * (newMax - newMin) + newMin;
+            return 0;
+        }
     }
 }
