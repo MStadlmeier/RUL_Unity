@@ -1,7 +1,7 @@
 RUL_Unity
 ===
 
-Version 1.0.0  
+Version 1.1.0  
 This library is designed to simplify randomization and the creation of procedurally generated content. RUL is capable of generating 
 pseudo-random numbers, vectors, colors and noise, as well as randomly modifying existing objects.
 
